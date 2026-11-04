@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Facility | Mantenimiento Edilicio & Facility Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e3a8a;
+            --accent: #16a34a;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        header h1 { font-size: 2.2em; margin-bottom: 8px; letter-spacing: 1px; }
+        header p { font-size: 1em; color: #93c5fd; max-width: 800px; margin: 0 auto; font-weight: 500; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 25px 20px; }
+
+        .contact-box {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: -25px;
+            margin-bottom: 35px;
+            border-top: 4px solid var(--accent);
+            gap: 12px;
+        }
+
+        .contact-item {
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item i { color: var(--accent); font-size: 1.2em; }
+        .contact-item a { color: var(--primary); text-decoration: none; font-weight: bold; }
+
+        .btn-insta {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white !important;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+
+        .btn-insta i { color: white !important; }
+
+        .section-title { text-align: center; color: var(--primary); font-size: 1.6em; margin-bottom: 6px; }
+        .section-subtitle { text-align: center; color: #64748b; margin-bottom: 25px; font-size: 0.95em; }
+
+        .facility-value-prop {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--secondary);
+        }
+
+        .facility-value-prop h3 { color: var(--primary); font-size: 1.2em; margin-bottom: 8px; }
+
+        .facility-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .feat-card { background: #f1f5f9; padding: 12px; border-radius: 8px; }
+        .feat-card h4 { color: var(--secondary); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; font-size: 0.95em; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 16px 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-top: 3px solid var(--secondary);
+            text-align: center;
+        }
+
+        .service-card i { font-size: 1.8em; color: var(--secondary); margin-bottom: 8px; }
+        .service-card h3 { font-size: 1em; color: var(--primary); margin-bottom: 5px; }
+        .service-card p { font-size: 0.82em; color: #475569; }
+
+        .gallery-category { margin-bottom: 30px; }
+        .category-title {
+            font-size: 1.15em;
+            color: var(--primary);
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* GRILLA MÁS COMPACTA CON TARJETAS PEQUEÑAS Y PROPORCIONADAS */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 14px;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border: 1px solid #cbd5e1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ALTURA DE IMAGEN REDUCIDA A 150PX */
+        .img-container {
+            width: 100%;
+            height: 150px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.04);
+        }
+
+        .gallery-item .info {
+            padding: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+            background: #ffffff;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #f1f5f9;
+            min-height: 40px;
+        }
+
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        #modal img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        #modal span {
+            position: absolute;
+            top: 15px; right: 25px;
+            color: white; font-size: 36px; font-weight: bold;
+            cursor: pointer;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 50px; height: 50px;
+            bottom: 20px; right: 20px;
+            background-color: #25d366; color: white;
+            border-radius: 50px; text-align: center; font-size: 28px;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.25);
+            z-index: 1000;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 30px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>URBAN FACILITY</h1>
+        <p>Mantenimiento Edilicio, Obras & Gestión Operativa para Empresas y Sucursales</p>
+    </header>
+
+    <div class="container">
+
+        <div class="contact-box">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:urbanfacility.norte@gmail.com">urbanfacility.norte@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:1160505691">11-6050-5691</a>
+            </div>
+            <div class="contact-item">
+                <a href="https://www.instagram.com/urban.electromecanica?obrf=MWc1bjVhNjF6NXcz" target="_blank" class="btn-insta">
+                    <i class="fab fa-instagram"></i> Ver Instagram
+                </a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/541160505691?text=Hola,%20quisiera%20solicitar%20un%20presupuesto%20para%20Urban%20Facility" target="_blank">WhatsApp Directo</a>
+            </div>
+        </div>
+
+        <div class="facility-value-prop">
+            <h3>Soluciones de Mantenimiento Punto a Punto o Gestión Multi-Sucursal</h3>
+            <p style="color: #475569; font-size: 0.95em;">
+                En <strong>Urban Facility</strong> nos encargamos tanto de trabajos técnicos puntuales como de la gestión operativa integral de mantenimiento para empresas con múltiples sedes, cadenas comerciales y consorcios.
+            </p>
+            <div class="facility-features">
+                <div class="feat-card">
+                    <h4><i class="fas fa-tools" style="color:var(--accent);"></i> Trabajos Específicos u Obras</h4>
+                    <p style="font-size: 0.85em;">Atención directa para montaje de tableros, instalaciones de climatización o reformas edilicias.</p>
+                </div>
+                <div class="feat-card">
+                    <h4><i class="fas fa-network-wired" style="color:var(--accent);"></i> Gestión Operativa Unificada</h4>
+                    <p style="font-size: 0.85em;">Un solo interlocutor técnico para coordinar el mantenimiento preventivo y correctivo de todas tus sucursales.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Nuestras Especialidades</h2>
+        <p class="section-subtitle">Servicios ejecutados con equipamiento profesional y estándares corporativos</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Electricidad & Tableros</h3>
+                <p>Armado de tableros trifásicos de comando, automatización de bombas, protecciones y tendidos eléctricos.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-snowflake"></i>
+                <h3>Climatización & HVAC</h3>
+                <p>Mantenimiento preventivo y correctivo de sistemas VRF, aires centrales Samsung y equipos Split comerciales.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-plug-circle-check"></i>
+                <h3>Puesta a Tierra (SRT)</h3>
+                <p>Medición con telurímetro, emisión de protocolo SRT y adecuación a normativas de seguridad eléctrica.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-roller"></i>
+                <h3>Durlock & Remodelaciones</h3>
+                <p>Construcción en seco, cielorrasos suspendidos, iluminación LED embutida y pintura integral para comercios y oficinas.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Evidencia de Trabajos Realizados</h2>
+        <p class="section-subtitle">Hacé clic en cualquier foto para verla en tamaño grande</p>
+
+        <!-- ELECTRICIDAD & TABLEROS -->
+        <div class="gallery-category">
+            <div class="category-title">
+                <i class="fas fa-bolt" style="color:var(--accent);"></i> Electricidad, Tableros & Canalizaciones
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="tablero de comando terminado.jpeg" alt="Tablero de comando" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Tablero de Comando Industrial</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="Tablero bombas de presión.jpeg" alt="Tablero bombas de presión" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Tablero Bombas de Presión</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="TABLERO,CON TRANSFERENCIA,MANUAL.jpeg" alt="Tablero transferencia" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Tablero Transferencia Manual</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="CORRECCIÓN DE CORTOS.jpeg" alt="Corrección de cortos" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Diagnóstico de Cortocircuitos</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="SISTEMA DE FRIO EN TABLEROS.jpeg" alt="Sistema de frío en tableros" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Sistema Frío en Tableros</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="Sistema de frio.jpeg" alt="Sistema de frío" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Refrigeración de Tableros</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="CABLEADOS POR BANDEJAS.jpeg" alt="Cableados por bandejas" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Cableados por Bandeja</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="CABLEADOS.jpeg" alt="Cableados eléctricos" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Organización de Cableados</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="MONTAJE, CANALIZACION EXTERIOR.jpeg" alt="Canalización exterior" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Canalización Exterior</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="tableros,,,+.jpeg" alt="Tableros" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Montaje de Tableros</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="tableros.jpeg" alt="Tableros varios" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Cableado en Tableros</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLIMATIZACIÓN Y REFRIGERACIÓN -->
+        <div class="gallery-category">
+            <div class="category-title">
+                <i class="fas fa-snowflake" style="color:var(--secondary);"></i> Climatización Central & HVAC
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="Aire central samsung.jpeg" alt="Aire Samsung VRF" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Sistema Central VRF Samsung</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="CENTRAL.jpeg" alt="Equipo Central" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Revisión de Unidad Central</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DURLOCK, PINTURA Y OBRAS -->
+        <div class="gallery-category">
+            <div class="category-title">
+                <i class="fas fa-paint-roller" style="color:var(--primary);"></i> Durlock, Pintura & Remodelaciones
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="aire,durlook - copia.jpeg" alt="Aire y Durlock" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Durlock y Climatización</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="PINTURA, PISO TECHO, ILUMINACIONES.jpeg" alt="Pintura e iluminación" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Pintura e Iluminación LED</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="PINTURA DE DEPARTAMENTOS.jpeg" alt="Pintura comercial" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Pintura Comercial de Calidad</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="INICIO DE PINTURA EXTERIOR.jpeg" alt="Pintura exterior" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Pintura Exterior de Fachada</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="FINALIZACION DE PINTURA EXTERIOR.jpeg" alt="Finalización pintura exterior" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Finalización Pintura Exterior</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="INCIO DE LOCAL.jpeg" alt="Inicio de local" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Adecuación Local Comercial</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="INCIO DE REMODELACIÓN.jpeg" alt="Inicio de remodelación" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Inicio Remodelación Edilicia</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="DEMARCACIONES.jpeg" alt="Demarcaciones" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Demarcación Operativa de Plantas</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="ISLA INICIO.jpeg" alt="Obra de Isla Inicio" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Inicio Obra en Isla</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="FINALIZACION OBRA DE ISLA.jpeg" alt="Finalización Obra de Isla" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Finalización Obra en Isla</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
+                        <img src="CABAÑA EN ISLA FINAL.jpeg" alt="Cabaña en Isla Final" onerror="this.closest('.gallery-item').style.display='none';">
+                    </div>
+                    <div class="info">Estructuras Finas y Obras</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL DE ZOOM -->
+    <div id="modal" onclick="closeModal()">
+        <span onclick="closeModal()">&times;</span>
+        <img id="modal-img" src="" alt="Fotografía ampliada">
+    </div>
+
+    <a href="https://wa.me/541160505691?text=Hola,%20quisiera%20solicitar%20un%20presupuesto%20para%20Urban%20Facility" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <p>&copy; 2026 Urban Facility - Gestión de Mantenimiento Edilicio e Instalaciones. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function openModal(element) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = "flex";
+            modalImg.src = element.src;
+        }
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+    </script>
+</body>
+</html>
