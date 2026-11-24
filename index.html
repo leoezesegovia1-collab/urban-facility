@@ -111,7 +111,6 @@
             aspect-ratio: 4 / 3;
             object-fit: cover;
         }
-        .promo .gallery-image img { object-fit: contain; }
         figcaption { padding: 9px 11px; font-size: .9rem; font-weight: 650; }
         figcaption small { display: block; color: var(--muted); font-weight: 400; }
 
@@ -181,7 +180,7 @@
     <main class="wrap">
         <section aria-labelledby="servicios">
             <h2 id="servicios">Servicios</h2>
-            <p class="intro">Atendemos trabajos puntuales y coordinamos mantenimiento preventivo y correctivo para propiedades y empresas con varias sedes.</p>
+            <p class="intro">Atendemos trabajos puntuales y coordinamos mantenimiento preventivo y correctivo para propiedades y empresas.</p>
 
             <div class="services">
                 <article class="service">
@@ -303,20 +302,6 @@
                     ["FINALIZACION OBRA DE ISLA.jpeg", "Finalización de obra en isla"],
                     ["CABAÑA EN ISLA FINAL.jpeg", "Cabaña en isla terminada"]
                 ]
-            },
-            {
-                id: "piezas",
-                title: "Piezas de Urban Facility",
-                photos: [
-                    ["NUEVA 1.jpeg", "Climatización y electromecánica"],
-                    ["NUEVA 2.jpeg", "Mantenimiento industrial e instalaciones"],
-                    ["NUEVA 3.jpeg", "Servicios eléctricos y electromecánicos"],
-                    ["NUEVA 4.jpeg", "Obras y remodelaciones"],
-                    ["NUEVA 5.jpeg", "Mantenimiento integral"],
-                    ["NUEVA 6.jpeg", "Servicios para hogares y empresas"],
-                    ["NUEVA 7.jpeg", "Instalaciones y obras"],
-                    ["NUEVA 8.jpeg", "Urban Facility"]
-                ]
             }
         ];
 
@@ -370,7 +355,7 @@
 
             const section = document.createElement("section");
             section.id = category.id;
-            section.className = category.id === "piezas" ? "gallery-category promo" : "gallery-category";
+            section.className = "gallery-category";
 
             const heading = document.createElement("h3");
             heading.id = category.id + "-title";
