@@ -1,538 +1,396 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Facility | Mantenimiento Edilicio & Facility Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Urban Facility en Pilar y Zona Norte. Electricidad, tableros, aire acondicionado split y central, refrigeración, obras y mantenimiento integral.">
+    <title>Urban Facility | Electricidad, Climatización y Mantenimiento en Pilar</title>
     <style>
         :root {
-            --primary: #0f172a;
-            --secondary: #1e3a8a;
-            --accent: #16a34a;
+            --navy: #0f172a;
+            --blue: #1e3a8a;
+            --green: #15803d;
             --light: #f8fafc;
-            --dark: #1e293b;
-            --card-bg: #ffffff;
+            --ink: #1e293b;
+            --muted: #475569;
+            --line: #dbe3ee;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            line-height: 1.55;
+            color: var(--ink);
+            background: var(--light);
         }
+        a { color: var(--blue); }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        :focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; }
 
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        .wrap { width: min(1120px, calc(100% - 36px)); margin-inline: auto; }
+        .hero {
+            padding: clamp(48px, 8vw, 90px) 0;
             color: white;
-            padding: 35px 20px;
-            text-align: center;
+            background: linear-gradient(120deg, var(--navy), #183354);
         }
-
-        header h1 { font-size: 2.2em; margin-bottom: 8px; letter-spacing: 1px; }
-        header p { font-size: 1em; color: #93c5fd; max-width: 800px; margin: 0 auto; font-weight: 500; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 25px 20px; }
-
-        .contact-box {
-            background: var(--card-bg);
-            padding: 15px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        .brand {
+            margin: 0 0 12px;
+            font-size: .9rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+        }
+        h1 {
+            max-width: 780px;
+            margin: 0;
+            font-size: clamp(2.1rem, 5.8vw, 4rem);
+            line-height: 1.08;
+        }
+        .hero-copy { max-width: 640px; margin: 20px 0 24px; color: #e2e8f0; }
+        .actions, .gallery-nav { display: flex; flex-wrap: wrap; gap: 10px; }
+        .button {
+            display: inline-block;
+            padding: 11px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .primary { background: var(--green); color: white; }
+        .secondary { border: 1px solid #94a3b8; color: white; }
+        .contact-bar {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: center;
-            margin-top: -25px;
-            margin-bottom: 35px;
-            border-top: 4px solid var(--accent);
-            gap: 12px;
+            gap: 12px 24px;
+            padding-block: 18px;
+            border-bottom: 1px solid var(--line);
+            overflow-wrap: anywhere;
         }
-
-        .contact-item {
-            font-size: 0.9em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .contact-item i { color: var(--accent); font-size: 1.2em; }
-        .contact-item a { color: var(--primary); text-decoration: none; font-weight: bold; }
-
-        .btn-insta {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white !important;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-        }
-
-        .btn-insta i { color: white !important; }
-
-        .section-title { text-align: center; color: var(--primary); font-size: 1.6em; margin-bottom: 6px; }
-        .section-subtitle { text-align: center; color: #64748b; margin-bottom: 25px; font-size: 0.95em; }
-
-        .facility-value-prop {
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 35px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
-            border-left: 5px solid var(--secondary);
-        }
-
-        .facility-value-prop h3 { color: var(--primary); font-size: 1.2em; margin-bottom: 8px; }
-
-        .facility-features {
+        main { padding-block: 34px 58px; }
+        h2 { margin: 0 0 8px; font-size: clamp(1.6rem, 4vw, 2.3rem); }
+        .intro { margin: 0 0 20px; color: var(--muted); }
+        .services, .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .feat-card { background: #f1f5f9; padding: 12px; border-radius: 8px; }
-        .feat-card h4 { color: var(--secondary); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; font-size: 0.95em; }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            padding: 16px 12px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border-top: 3px solid var(--secondary);
-            text-align: center;
-        }
-
-        .service-card i { font-size: 1.8em; color: var(--secondary); margin-bottom: 8px; }
-        .service-card h3 { font-size: 1em; color: var(--primary); margin-bottom: 5px; }
-        .service-card p { font-size: 0.82em; color: #475569; }
-
-        .gallery-category { margin-bottom: 30px; }
-        .category-title {
-            font-size: 1.15em;
-            color: var(--primary);
-            margin-bottom: 12px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
             gap: 14px;
         }
-
-        .gallery-item {
-            background: var(--card-bg);
+        .service, .gallery-item {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+        .service { padding: 16px; }
+        .service h3 { margin: 0 0 6px; font-size: 1.08rem; }
+        .service p { margin: 0; color: var(--muted); }
+        .gallery { margin-top: 42px; }
+        .gallery-nav { margin: 0 0 22px; }
+        .gallery-nav a {
+            padding: 7px 11px;
+            border: 1px solid var(--line);
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            border: 1px solid #cbd5e1;
-            display: flex;
-            flex-direction: column;
+            background: white;
+            text-decoration: none;
+            font-weight: 650;
         }
-
-        .img-container {
-            width: 100%;
-            height: 150px;
-            background-color: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            cursor: pointer;
+        .gallery-category { margin-top: 30px; scroll-margin-top: 16px; }
+        .gallery-category h3 { margin: 0 0 12px; font-size: 1.2rem; }
+        .gallery-grid {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr));
         }
-
-        .gallery-item img {
+        .gallery-item { margin: 0; overflow: hidden; }
+        .gallery-image {
+            display: block;
             width: 100%;
-            height: 100%;
+            padding: 0;
+            border: 0;
+            background: #edf2f7;
+            cursor: zoom-in;
+        }
+        .gallery-image img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
             object-fit: cover;
-            object-position: center;
-            transition: transform 0.2s ease;
         }
+        .promo .gallery-image img { object-fit: contain; }
+        figcaption { padding: 9px 11px; font-size: .9rem; font-weight: 650; }
+        figcaption small { display: block; color: var(--muted); font-weight: 400; }
 
-        .gallery-item img:hover {
-            transform: scale(1.04);
+        dialog {
+            width: fit-content;
+            max-width: 96vw;
+            max-height: 96vh;
+            padding: 9px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--navy);
+            color: white;
         }
-
-        .gallery-item .info {
-            padding: 8px;
-            font-size: 0.8em;
-            font-weight: 600;
-            color: var(--primary);
-            text-align: center;
-            background: #ffffff;
-            flex-grow: 1;
+        dialog::backdrop { background: rgba(0, 0, 0, .85); }
+        .dialog-bar {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            border-top: 1px solid #f1f5f9;
-            min-height: 40px;
+            gap: 16px;
+            padding: 0 4px 7px;
         }
-
-        .fallback-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            background: #e2e8f0;
-            color: #475569;
-            font-size: 0.8em;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .fallback-card i { font-size: 2.2em; color: var(--secondary); margin-bottom: 6px; }
-
-        #modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.92);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        #modal img {
-            max-width: 90%;
-            max-height: 85vh;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
-        }
-        #modal span {
-            position: absolute;
-            top: 15px; right: 25px;
-            color: white; font-size: 36px; font-weight: bold;
+        .dialog-bar p { margin: 0; }
+        .close {
+            color: white;
+            background: transparent;
+            border: 1px solid #94a3b8;
+            border-radius: 6px;
+            padding: 5px 9px;
             cursor: pointer;
         }
-
+        .zoom-image {
+            display: block;
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        footer { padding: 24px 0; background: var(--navy); color: white; }
+        footer p { margin: 0; }
         .whatsapp-float {
             position: fixed;
-            width: 50px; height: 50px;
-            bottom: 20px; right: 20px;
-            background-color: #25d366; color: white;
-            border-radius: 50px; text-align: center; font-size: 28px;
-            box-shadow: 2px 4px 10px rgba(0,0,0,0.25);
-            z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none;
+            right: 16px;
+            bottom: 16px;
+            z-index: 1;
+            box-shadow: 0 3px 12px #0003;
         }
-
-        footer {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 18px;
-            margin-top: 30px;
-            font-size: 0.8em;
-        }
+        footer .wrap { padding-bottom: 42px; }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>URBAN FACILITY</h1>
-        <p>Mantenimiento Edilicio, Obras & Gestión Operativa para Empresas y Sucursales</p>
+    <header class="hero">
+        <div class="wrap">
+            <p class="brand">URBAN FACILITY</p>
+            <h1>Electricidad, climatización y mantenimiento integral</h1>
+            <p class="hero-copy">Instalaciones, reparaciones y obras para hogares, comercios, empresas y consorcios de Pilar y Zona Norte.</p>
+            <div class="actions">
+                <a class="button primary" href="https://wa.me/541160505691?text=Hola%2C%20quisiera%20solicitar%20un%20presupuesto%20para%20Urban%20Facility" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+                <a class="button secondary" href="tel:+541160505691">Llamar al 11-6050-5691</a>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
-
-        <div class="contact-box">
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:urbanfacility.norte@gmail.com">urbanfacility.norte@gmail.com</a>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <a href="tel:1160505691">11-6050-5691</a>
-            </div>
-            <div class="contact-item">
-                <a href="https://www.instagram.com/urban.electromecanica?obrf=MWc1bjVhNjF6NXcz" target="_blank" class="btn-insta">
-                    <i class="fab fa-instagram"></i> @urban.electromecanica
-                </a>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-whatsapp"></i>
-                <a href="https://wa.me/541160505691?text=Hola,%20quisiera%20solicitar%20un%20presupuesto%20para%20Urban%20Facility" target="_blank">WhatsApp Directo</a>
-            </div>
-        </div>
-
-        <div class="facility-value-prop">
-            <h3>Soluciones de Mantenimiento Punto a Punto o Gestión Multi-Sucursal</h3>
-            <p style="color: #475569; font-size: 0.95em;">
-                En <strong>Urban Facility</strong> nos encargamos tanto de trabajos técnicos puntuales como de la gestión operativa integral de mantenimiento para empresas con múltiples sedes, cadenas comerciales y consorcios.
-            </p>
-            <div class="facility-features">
-                <div class="feat-card">
-                    <h4><i class="fas fa-tools" style="color:var(--accent);"></i> Trabajos Específicos u Obras</h4>
-                    <p style="font-size: 0.85em;">Atención directa para montaje de tableros, instalaciones de climatización o reformas edilicias.</p>
-                </div>
-                <div class="feat-card">
-                    <h4><i class="fas fa-network-wired" style="color:var(--accent);"></i> Gestión Operativa Unificada</h4>
-                    <p style="font-size: 0.85em;">Un solo interlocutor técnico para coordinar el mantenimiento preventivo y correctivo de todas tus sucursales.</p>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">Nuestras Especialidades</h2>
-        <p class="section-subtitle">Servicios ejecutados con equipamiento profesional y estándares corporativos</p>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-bolt"></i>
-                <h3>Electricidad & Tableros</h3>
-                <p>Armado de tableros trifásicos de comando, automatización de bombas, protecciones y tendidos eléctricos.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-snowflake"></i>
-                <h3>Climatización & HVAC</h3>
-                <p>Mantenimiento preventivo y correctivo de sistemas VRF, aires centrales Samsung y equipos Split comerciales.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-plug-circle-check"></i>
-                <h3>Puesta a Tierra (SRT)</h3>
-                <p>Medición con telurímetro, emisión de protocolo SRT y adecuación a normativas de seguridad eléctrica.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-paint-roller"></i>
-                <h3>Durlock & Remodelaciones</h3>
-                <p>Construcción en seco, cielorrasos suspendidos, iluminación LED embutida y pintura integral para comercios y oficinas.</p>
-            </div>
-        </div>
-
-        <h2 class="section-title">Evidencia de Trabajos Realizados</h2>
-        <p class="section-subtitle">Hacé clic en cualquier foto para verla en tamaño grande</p>
-
-        <!-- ELECTRICIDAD & TABLEROS -->
-        <div class="gallery-category">
-            <div class="category-title">
-                <i class="fas fa-bolt" style="color:var(--accent);"></i> Electricidad, Tableros & Canalizaciones
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="tablero de comando terminado.jpeg" alt="Tablero de comando" onerror="handleImgError(this, 'fa-bolt', 'Tablero de Comando');">
-                    </div>
-                    <div class="info">Tablero de Comando Industrial</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="Tablero bombas de presión.jpeg" alt="Tablero bombas de presión" onerror="handleImgError(this, 'fa-faucet-drip', 'Bombas de Presión');">
-                    </div>
-                    <div class="info">Tablero Bombas de Presión</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="TABLERO,CON TRANSFERENCIA,MANUAL.jpeg" alt="Tablero transferencia" onerror="handleImgError(this, 'fa-sliders', 'Transferencia Manual');">
-                    </div>
-                    <div class="info">Tablero Transferencia Manual</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="CORRECCIÓN DE CORTOS.jpeg" alt="Corrección de cortos" onerror="handleImgError(this, 'fa-triangle-exclamation', 'Corrección de Cortos');">
-                    </div>
-                    <div class="info">Diagnóstico de Cortocircuitos</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="SISTEMA DE FRIO EN TABLEROS.jpeg" alt="Sistema de frío en tableros" onerror="handleImgError(this, 'fa-temperature-arrow-down', 'Refrigeración Tableros');">
-                    </div>
-                    <div class="info">Sistema Frío en Tableros</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="Sistema de frio.jpeg" alt="Sistema de frío" onerror="handleImgError(this, 'fa-snowflake', 'Sistema de Frío');">
-                    </div>
-                    <div class="info">Refrigeración de Tableros</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="CABLEADOS POR BANDEJAS.jpeg" alt="Cableados por bandejas" onerror="handleImgError(this, 'fa-network-wired', 'Cableado en Bandeja');">
-                    </div>
-                    <div class="info">Cableados por Bandeja</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="CABLEADOS.jpeg" alt="Cableados eléctricos" onerror="handleImgError(this, 'fa-plug', 'Tendido Eléctrico');">
-                    </div>
-                    <div class="info">Organización de Cableados</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="MONTAJE, CANALIZACION EXTERIOR.jpeg" alt="Canalización exterior" onerror="handleImgError(this, 'fa-boxes-packing', 'Canalización Exterior');">
-                    </div>
-                    <div class="info">Canalización Exterior</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="tableros,,,+.jpeg" alt="Tableros" onerror="handleImgError(this, 'fa-microchip', 'Montaje Tableros');">
-                    </div>
-                    <div class="info">Montaje de Tableros</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="tableros.jpeg" alt="Tableros varios" onerror="handleImgError(this, 'fa-charging-station', 'Tableros Eléctricos');">
-                    </div>
-                    <div class="info">Cableado en Tableros</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CLIMATIZACIÓN Y REFRIGERACIÓN -->
-        <div class="gallery-category">
-            <div class="category-title">
-                <i class="fas fa-snowflake" style="color:var(--secondary);"></i> Climatización Central & HVAC
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="Aire central samsung.jpeg" alt="Aire Samsung VRF" onerror="handleImgError(this, 'fa-fan', 'VRF Samsung Central');">
-                    </div>
-                    <div class="info">Sistema Central VRF Samsung</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="CENTRAL.jpeg" alt="Equipo Central" onerror="handleImgError(this, 'fa-wind', 'Unidad Central HVAC');">
-                    </div>
-                    <div class="info">Revisión de Unidad Central</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- DURLOCK, PINTURA Y OBRAS -->
-        <div class="gallery-category">
-            <div class="category-title">
-                <i class="fas fa-paint-roller" style="color:var(--primary);"></i> Durlock, Pintura & Remodelaciones
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="aire,durlook - copia.jpeg" alt="Aire y Durlock" onerror="handleImgError(this, 'fa-hammer', 'Durlock y Clima');">
-                    </div>
-                    <div class="info">Durlock y Climatización</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="PINTURA, PISO TECHO, ILUMINACIONES.jpeg" alt="Pintura e iluminación" onerror="handleImgError(this, 'fa-lightbulb', 'Pintura & LED');">
-                    </div>
-                    <div class="info">Pintura e Iluminación LED</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="PINTURA DE DEPARTAMENTOS.jpeg" alt="Pintura comercial" onerror="handleImgError(this, 'fa-brush', 'Pintura Comercial');">
-                    </div>
-                    <div class="info">Pintura Comercial de Calidad</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="INICIO DE PINTURA EXTERIOR.jpeg" alt="Pintura exterior" onerror="handleImgError(this, 'fa-fill-drip', 'Pintura Exterior');">
-                    </div>
-                    <div class="info">Pintura Exterior de Fachada</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="FINALIZACION DE PINTURA EXTERIOR.jpeg" alt="Finalización pintura exterior" onerror="handleImgError(this, 'fa-check-double', 'Pintura Terminada');">
-                    </div>
-                    <div class="info">Finalización Pintura Exterior</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="INCIO DE LOCAL.jpeg" alt="Inicio de local" onerror="handleImgError(this, 'fa-store', 'Adecuación Local');">
-                    </div>
-                    <div class="info">Adecuación Local Comercial</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="INCIO DE REMODELACIÓN.jpeg" alt="Inicio de remodelación" onerror="handleImgError(this, 'fa-trowel-bricks', 'Inicio Remodelación');">
-                    </div>
-                    <div class="info">Inicio Remodelación Edilicia</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="DEMARCACIONES.jpeg" alt="Demarcaciones" onerror="handleImgError(this, 'fa-ruler-combined', 'Demarcación Planta');">
-                    </div>
-                    <div class="info">Demarcación Operativa de Plantas</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="ISLA INICIO.jpeg" alt="Obra de Isla Inicio" onerror="handleImgError(this, 'fa-building-flag', 'Obra de Isla');">
-                    </div>
-                    <div class="info">Inicio Obra en Isla</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="FINALIZACION OBRA DE ISLA.jpeg" alt="Finalización Obra de Isla" onerror="handleImgError(this, 'fa-city', 'Finalización Isla');">
-                    </div>
-                    <div class="info">Finalización Obra en Isla</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-container" onclick="openModal(this.querySelector('img'))">
-                        <img src="CABAÑA EN ISLA FINAL.jpeg" alt="Cabaña en Isla Final" onerror="handleImgError(this, 'fa-house-chimney-window', 'Estructuras Finas');">
-                    </div>
-                    <div class="info">Estructuras Finas y Obras</div>
-                </div>
-            </div>
-        </div>
-
+    <div class="wrap contact-bar">
+        <a href="mailto:urbanfacility.norte@gmail.com">urbanfacility.norte@gmail.com</a>
+        <a href="https://www.instagram.com/urban.electromecanica/" target="_blank" rel="noopener noreferrer">@urban.electromecanica</a>
     </div>
 
-    <!-- MODAL DE ZOOM -->
-    <div id="modal" onclick="closeModal()">
-        <span onclick="closeModal()">&times;</span>
-        <img id="modal-img" src="" alt="Fotografía ampliada">
-    </div>
+    <main class="wrap">
+        <section aria-labelledby="servicios">
+            <h2 id="servicios">Servicios</h2>
+            <p class="intro">Atendemos trabajos puntuales y coordinamos mantenimiento preventivo y correctivo para propiedades y empresas con varias sedes.</p>
 
-    <a href="https://wa.me/541160505691?text=Hola,%20quisiera%20solicitar%20un%20presupuesto%20para%20Urban%20Facility" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+            <div class="services">
+                <article class="service">
+                    <h3>Electricidad y tableros</h3>
+                    <p>Instalaciones domiciliarias, comerciales e industriales. Tableros eléctricos y de comando, canalizaciones, iluminación, puesta a tierra y bombas de agua.</p>
+                </article>
+                <article class="service">
+                    <h3>Aire acondicionado</h3>
+                    <p>Instalación, service y reparación de split, inverter, centrales, piso techo y cassette. Diagnóstico y carga de refrigerante cuando corresponde.</p>
+                </article>
+                <article class="service">
+                    <h3>Refrigeración comercial</h3>
+                    <p>Instalación, mantenimiento y reparación de cámaras frigoríficas y equipos de frío comercial.</p>
+                </article>
+                <article class="service">
+                    <h3>Heladeras, freezers y lavarropas</h3>
+                    <p>Diagnóstico y reparación de fallas de enfriamiento, arranque, desagote y centrifugado, según el equipo.</p>
+                </article>
+                <article class="service">
+                    <h3>Obras y remodelaciones</h3>
+                    <p>Obras llave en mano, albañilería, revoques, contrapisos, cerámicos, porcelanatos, piedra, Durlock, pintura y Tarquini.</p>
+                </article>
+                <article class="service">
+                    <h3>Instalaciones y mantenimiento</h3>
+                    <p>Plomería, herrería, impermeabilización, reparación de techos y montaje de racks para depósitos. Instalaciones de gas con profesionales matriculados.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="gallery" aria-labelledby="galeria">
+            <h2 id="galeria">Galería de trabajos y servicios</h2>
+            <p class="intro">Tocá una imagen para verla en tamaño grande.</p>
+            <nav id="gallery-nav" class="gallery-nav" aria-label="Rubros de la galería"></nav>
+            <div id="gallery-sections"></div>
+        </section>
+    </main>
+
+    <dialog id="photo-dialog" aria-labelledby="photo-caption">
+        <div class="dialog-bar">
+            <p id="photo-caption"></p>
+            <form method="dialog">
+                <button class="close" type="submit">Cerrar</button>
+            </form>
+        </div>
+        <img class="zoom-image" id="photo-preview" alt="">
+    </dialog>
+
+    <a class="button primary whatsapp-float" href="https://wa.me/541160505691?text=Hola%2C%20quisiera%20solicitar%20un%20presupuesto%20para%20Urban%20Facility" target="_blank" rel="noopener noreferrer">WhatsApp</a>
 
     <footer>
-        <p>&copy; 2026 Urban Facility - Mantenimiento Edilicio e Instalaciones. Todos los derechos reservados.</p>
+        <div class="wrap">
+            <p>Urban Facility · Pilar y Zona Norte</p>
+        </div>
     </footer>
 
     <script>
-        function openModal(element) {
-            if (!element) return;
-            const modal = document.getElementById('modal');
-            const modalImg = document.getElementById('modal-img');
-            modal.style.display = "flex";
-            modalImg.src = element.src;
+        const categories = [
+            {
+                id: "electricidad",
+                title: "Electricidad, tableros y canalizaciones",
+                photos: [
+                    ["tablero de comando terminado.jpeg", "Tablero de comando terminado"],
+                    ["ARMADO DE TABLEROS.jpeg", "Armado de tableros"],
+                    ["Tablero bombas de presión.jpeg", "Tablero de bombas de presión"],
+                    ["TABLERO,CON TRANSFERENCIA,MANUAL.jpeg", "Tablero con transferencia manual"],
+                    ["tableros.jpeg", "Tableros eléctricos"],
+                    ["tableros..jpeg", "Detalle de tablero eléctrico"],
+                    ["tableros.jfif", "Montaje de tableros"],
+                    ["CABLEADOS POR BANDEJAS.jpeg", "Cableado por bandejas"],
+                    ["CABLEADOS.jpeg", "Tendido eléctrico"],
+                    ["MONTAJE, CANALIZACION EXTERIOR.jpeg", "Montaje de canalización exterior"],
+                    ["REFRIGERACIÓN TABLEROS DE LINEA DE PRODUCCIÓN.jpeg", "Refrigeración de tableros de línea de producción"],
+                    ["SISTEMA DE FRIO EN TABLEROS.jpeg", "Sistema de frío en tableros"]
+                ]
+            },
+            {
+                id: "climatizacion",
+                title: "Aires split y centrales",
+                photos: [
+                    ["Mantenimieno y reparación de split.jpeg", "Mantenimiento y reparación de split"],
+                    ["instalación de aire.jpeg", "Instalación de aire acondicionado"],
+                    ["instsala1.jpeg", "Instalación de split en interior"],
+                    ["Aire central samsung.jpeg", "Aire central Samsung"],
+                    ["AC, CENTRAL RESIDENCIAL.jpeg", "Aire central residencial"],
+                    ["AC,CENTRAL.jpeg", "Sistema de aire central"],
+                    ["CENTRAL.jpeg", "Unidad central de climatización"],
+                    ["AC,PISO TECHO.jpeg", "Aire acondicionado piso techo"],
+                    ["Compresor de aire acondicionado en fachada.png", "Unidad exterior de aire acondicionado", true]
+                ]
+            },
+            {
+                id: "refrigeracion",
+                title: "Refrigeración, heladeras y lavarropas",
+                photos: [
+                    ["Sistema de frio.jpeg", "Sistema de frío"],
+                    ["Refrigeración.jpeg", "Servicio de refrigeración"],
+                    ["Parte trasera del frigorífico expuesta.png", "Compresor y circuito de una heladera", true],
+                    ["Lavadora de carga superior desmontada.png", "Lavarropas de carga superior desmontado", true],
+                    ["Lavadora abierta en taller de reparación.png", "Lavarropas abierto en taller", true],
+                    ["Banco de Reparación Electrónica.png", "Placa electrónica en banco de trabajo", true]
+                ]
+            },
+            {
+                id: "obras",
+                title: "Obras, remodelaciones, pintura y Durlock",
+                photos: [
+                    ["FINAL DE DURLOK CON ILUMINACIONES INSTALADA.jpeg", "Durlock terminado con iluminación instalada"],
+                    ["aire,durlook.jpeg", "Climatización y Durlock en obra"],
+                    ["aire,durlook - copia.jpeg", "Detalle de climatización y Durlock"],
+                    ["PINTURA, PISO TECHO, ILUMINACIONES.jpeg", "Pintura, aire piso techo e iluminación"],
+                    ["PINTURA DE DEPARTAMENTOS.jpeg", "Pintura de departamentos"],
+                    ["INICIO DE PINTURA EXTERIOR.jpeg", "Inicio de pintura exterior"],
+                    ["FINALIZACION DE PINTURA EXTERIOR.jpeg", "Pintura exterior terminada"],
+                    ["INCIO DE LOCAL.jpeg", "Inicio de adecuación de local"],
+                    ["INCIO DE REMODELACIÓN.jpeg", "Inicio de remodelación"],
+                    ["Interior en renovación con herramientas y andamios.png", "Interior en renovación", true],
+                    ["Renovación moderna con escalera y pintura.png", "Pintura y terminaciones interiores", true],
+                    ["DEMARCACIONES.jpeg", "Demarcaciones de piso"],
+                    ["FINALIZACION OBRA DE ISLA.jpeg", "Finalización de obra en isla"],
+                    ["CABAÑA EN ISLA FINAL.jpeg", "Cabaña en isla terminada"]
+                ]
+            },
+            {
+                id: "piezas",
+                title: "Piezas de Urban Facility",
+                photos: [
+                    ["NUEVA 1.jpeg", "Climatización y electromecánica"],
+                    ["NUEVA 2.jpeg", "Mantenimiento industrial e instalaciones"],
+                    ["NUEVA 3.jpeg", "Servicios eléctricos y electromecánicos"],
+                    ["NUEVA 4.jpeg", "Obras y remodelaciones"],
+                    ["NUEVA 5.jpeg", "Mantenimiento integral"],
+                    ["NUEVA 6.jpeg", "Servicios para hogares y empresas"],
+                    ["NUEVA 7.jpeg", "Instalaciones y obras"],
+                    ["NUEVA 8.jpeg", "Urban Facility"]
+                ]
+            }
+        ];
+
+        const nav = document.getElementById("gallery-nav");
+        const sections = document.getElementById("gallery-sections");
+        const dialog = document.getElementById("photo-dialog");
+        const preview = document.getElementById("photo-preview");
+        const caption = document.getElementById("photo-caption");
+
+        function makePhoto([file, label, illustrative]) {
+            const figure = document.createElement("figure");
+            figure.className = "gallery-item";
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "gallery-image";
+            button.setAttribute("aria-label", "Ampliar: " + label);
+
+            const img = document.createElement("img");
+            img.src = encodeURIComponent(file);
+            img.alt = label;
+            img.loading = "lazy";
+            img.decoding = "async";
+
+            const description = document.createElement("figcaption");
+            description.textContent = label;
+
+            if (illustrative) {
+                const note = document.createElement("small");
+                note.textContent = "Imagen ilustrativa";
+                description.append(note);
+            }
+
+            button.addEventListener("click", () => {
+                preview.src = img.src;
+                preview.alt = label;
+                caption.textContent = illustrative ? label + " · Imagen ilustrativa" : label;
+                dialog.showModal();
+            });
+
+            button.append(img);
+            figure.append(button, description);
+            return figure;
         }
 
-        function closeModal() {
-            document.getElementById('modal').style.display = "none";
+        for (const category of categories) {
+            const link = document.createElement("a");
+            link.href = "#" + category.id;
+            link.textContent = category.title;
+            nav.append(link);
+
+            const section = document.createElement("section");
+            section.id = category.id;
+            section.className = category.id === "piezas" ? "gallery-category promo" : "gallery-category";
+
+            const heading = document.createElement("h3");
+            heading.id = category.id + "-title";
+            heading.textContent = category.title;
+            section.setAttribute("aria-labelledby", heading.id);
+
+            const grid = document.createElement("div");
+            grid.className = "gallery-grid";
+            grid.append(...category.photos.map(makePhoto));
+            section.append(heading, grid);
+            sections.append(section);
         }
 
-        function handleImgError(img, iconClass, title) {
-            const container = img.parentElement;
-            container.removeAttribute('onclick');
-            container.innerHTML = `
-                <div class="fallback-card">
-                    <i class="fas ${iconClass}"></i>
-                    <span><strong>${title}</strong><br>Servicio Técnico</span>
-                </div>
-            `;
-        }
+        dialog.addEventListener("click", (event) => {
+            if (event.target === dialog) dialog.close();
+        });
+
+        dialog.addEventListener("close", () => {
+            preview.removeAttribute("src");
+        });
     </script>
 </body>
 </html>
